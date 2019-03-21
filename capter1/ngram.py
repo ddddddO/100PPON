@@ -21,8 +21,9 @@ def bi_gram_char(target):
     return bi_gram_list
 
 
-target = "I am an NLPer"
+if __name__=='__main__':
+    target = "I am an NLPer"
 
-print('src: {}'.format(target))
-print(bi_gram_word(target))
-print(bi_gram_char(target))
+    print('src: {}'.format(target))
+    print(bi_gram_word(target))
+    print(bi_gram_char(target))
