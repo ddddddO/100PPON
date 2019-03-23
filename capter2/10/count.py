@@ -1,8 +1,10 @@
-print('鬮倡衍逵�')
+#!/usr/bin/python3
+import os
 
-#bytes_sjis = '鬮倡衍'.encode('shift_jis')
-bytes_sjis = '逵�'.encode('shift_jis')
+os.chdir('../data')
+input_path = os.getcwd() + '/hightemp.txt'
 
-print(bytes_sjis)
+with open(input_path, 'r', encoding='utf-8') as f:
+    lines = f.readlines()
 
-print(bytes_sjis.decode(encoding='utf-8'))
+print(len(lines))
