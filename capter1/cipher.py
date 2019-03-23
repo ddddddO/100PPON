@@ -2,14 +2,21 @@
 import argparse
 
 def decrypt(target):
-    print('DECRIPT')
-    print(target)
-    
+    print('DECRYPT')
+
+    decrypted_text = ''
+    for char in target:
+        n = 219 - ord(char)
+        if 97 <= n and n <= 122:
+            decrypted_text += chr(n)
+        else:
+            decrypted_text += char
+
+    print(decrypted_text)
 
 # https://www.k-cube.co.jp/wakaba/server/ascii_code.html
 def encrypt(target):
-    print('ECRIPT')
-    print(target)
+    print('ENCRYPT')
 
     encrypted_text = ''
     for char in target:
