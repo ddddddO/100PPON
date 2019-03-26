@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 # 否定・肯定先読み：http://www-creators.com/archives/2746
+# 「.*?」: http://www-creators.com/archives/5462
 import re, os
 
 pattern = '.*Category:(.*?)(?=(]|(\|\*)))'
