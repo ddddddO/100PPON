@@ -36,8 +36,6 @@ with open(path, 'r') as f:
         if extracted3 is not None:
             level3_list.append(extracted3)
 
-ll = [1, 2, 3]
 lll = [level1_list, level2_list, level3_list]
-for level, level_list in zip(ll, lll):
-    disp(level, level_list)
-
+for level, level_list in enumerate(lll):
+    disp(level+1, level_list)
