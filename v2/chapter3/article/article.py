@@ -5,9 +5,9 @@ class Article:
         target_country = '{"title": "' + country + '",'
         for line in open(src, 'r').readlines():
             if target_country in line:
-                self.content = line
+                self._content = line
                 return
         #raise
 
     def get_content(self):
-        return self.content
+        return self._content
