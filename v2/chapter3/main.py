@@ -10,3 +10,5 @@ if __name__ == '__main__':
 
     # 20. JSONデータの読み込み
     print(england_article.get_content())
+    print('-' * 100)
+    print(england_article.get_category_rows())
