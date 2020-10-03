@@ -1,5 +1,4 @@
 import modules.sequence as mod
-#import modules.sequence_error as mod_err
 
 src_0 = 'I am an NLPer'
 print('input sequence: {value}'.format(value=src_0))
