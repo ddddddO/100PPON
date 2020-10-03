@@ -6,7 +6,7 @@ def typoglycemia(origin):
     generated = []
     words = origin.split(' ')
     for _, word in enumerate(words):
-        if len(word) >= 4:
+        if len(word) > 4:
             begin_char = word[0]
             end_char = word[-1]
             seq = [i for i in range(1, len(word)-1)]
