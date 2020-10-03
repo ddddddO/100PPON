@@ -1,3 +1,5 @@
+from modules.sequence_error import UnsupportedTypeError, UnsupportedSplitTypeError
+
 class Sequence:
     def __init__(self, sequence):
         self.value = sequence
@@ -18,6 +20,8 @@ class Sequence:
                     tmp = splited[i:i+n]
                     rslt.append(tmp)
                 return rslt
+            else:
+                raise UnsupportedSplitTypeError('Unsupported split type. Only \'word\' or \'char\'.')
         elif type(v) is list:
             if split_type is 'word':
                 for i in range(0, len(v)-(n-1)):
@@ -30,11 +34,16 @@ class Sequence:
                     tmp = s[i:i+n]
                     rslt.append(tmp)
                 return rslt
+            else:
+                raise UnsupportedSplitTypeError('Unsupported split type. Only \'word\' or \'char\'.')
         else:
-            pass
+            raise UnsupportedTypeError('Unsupported type. Only str or list.')
 
     def bi_gram_word(self):
         return self.n_gram(2, 'word')
 
     def bi_gram_char(self):
         return self.n_gram(2, 'char')
+
+    def bi_gram_unsupported_split_type(self):
+        return self.n_gram(2, 'xxxxxx')
