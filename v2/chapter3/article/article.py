@@ -6,7 +6,7 @@ class Article:
             if target_country in line:
                 self._content = line
                 break
-        #raise
+
         self._extract_category_rows()
 
     def get_content(self):
