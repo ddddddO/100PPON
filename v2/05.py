@@ -1,0 +1,15 @@
+import modules.sequence as mod
+
+src_0 = 'I am an NLPer'
+print('input sequence: {value}'.format(value=src_0))
+seq_0 = mod.Sequence(src_0)
+print(seq_0.bi_gram_word())
+print(seq_0.bi_gram_char())
+
+print('-' * 70)
+
+src_1 = ['I', 'am', 'not', 'an' , 'NLPer']
+print('input sequence: {value}'.format(value=src_1))
+seq_1 = mod.Sequence(src_1)
+print(seq_1.bi_gram_word())
+print(seq_1.bi_gram_char())
