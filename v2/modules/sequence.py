@@ -4,7 +4,7 @@ class Sequence:
     def __init__(self, sequence):
         self.value = sequence
 
-    def n_gram(self, n, split_type):
+    def _n_gram(self, n, split_type):
         v = self.value
         rslt = []
         if type(v) is str:
@@ -40,10 +40,10 @@ class Sequence:
             raise UnsupportedTypeError('Unsupported type. Only str or list.')
 
     def bi_gram_word(self):
-        return self.n_gram(2, 'word')
+        return self._n_gram(2, 'word')
 
     def bi_gram_char(self):
-        return self.n_gram(2, 'char')
+        return self._n_gram(2, 'char')
 
     def bi_gram_unsupported_split_type(self):
-        return self.n_gram(2, 'xxxxxx')
+        return self._n_gram(2, 'xxxxxx')
