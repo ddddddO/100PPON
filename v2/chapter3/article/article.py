@@ -120,5 +120,12 @@ class Article:
         for kv in base_info_kv_list:
             tmp = kv.split('=')
             k = tmp[0].strip()
-            v = tmp[1].strip()
+            v = self._trim_strong_tag(tmp[1].strip())
             self._base_info_map[k] = v
+
+    def _trim_strong_tag(self, value):
+        '''26. 強調マークアップの除去'''
+        tmp = re.sub('\'\'\'\'\'', '', value)
+        tmp = re.sub('\'\'\'', '', tmp)
+        tmp = re.sub('\'\'', '', tmp)
+        return tmp
