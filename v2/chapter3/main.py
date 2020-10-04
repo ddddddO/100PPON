@@ -4,7 +4,7 @@ if __name__ == '__main__':
     wiki_path = './wiki'
     Article.down_load_article_once(wiki_path)
 
-    country = 'イギリス'
+    country = '日本'
     england_article = Article(wiki_path, country)
 
     # 20. JSONデータの読み込み
@@ -31,3 +31,7 @@ if __name__ == '__main__':
     # 25. テンプレートの抽出/26. 強調マークアップの除去/27. 内部リンクの除去/28. MediaWikiマークアップの除去
     print('25. テンプレートの抽出/26. 強調マークアップの除去/27. 内部リンクの除去/28. MediaWikiマークアップの除去:\n{src}'.format(src=england_article.get_base_info_map()))
     print('-' * 100)
+
+    # 29. 国旗画像のURLを取得する
+    national_flag_image_name = england_article.get_base_info_map()['国旗画像']
+    print('29. 国旗画像のURLを取得する:\n{src}'.format(src=england_article.get_image_url(national_flag_image_name)))

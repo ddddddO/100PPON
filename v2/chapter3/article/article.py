@@ -1,6 +1,7 @@
 import re
 import os
 import gzip
+import json
 from urllib.request import urlopen
 
 class Article:
@@ -49,6 +50,15 @@ class Article:
 
     def get_base_info_map(self):
         return self._base_info_map
+
+    def get_image_url(self, name):
+        '''29. 国旗画像のURLを取得する'''
+        image_name = re.sub(' ', '_', name)
+        # url = 'https://en.wikipedia.org/w/api.php?action=query&format=json&prop=imageinfo&titles=File:' + image_name
+        # response = urlopen(url)
+        # data = json.loads(response.read().decode('utf-8'))
+        # title = data['query']['pages']
+        return 'https://ja.wikipedia.org/wiki/File:' + image_name
 
 # ------------------------ private methods ------------------------
 
