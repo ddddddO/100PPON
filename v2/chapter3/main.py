@@ -1,11 +1,11 @@
 from article.article import Article
 
 if __name__ == '__main__':
-    wiki_path = './wiki'
-    Article.down_load_article_once(wiki_path)
+    WIKI_PATH = './wiki'
+    Article.down_load_article_once(WIKI_PATH)
 
     country = 'イギリス'
-    england_article = Article(wiki_path, country)
+    england_article = Article(WIKI_PATH, country)
 
     # 20. JSONデータの読み込み
     print('20. JSONデータの読み込み:\n{src}'.format(src=england_article.get_content()))
