@@ -1,11 +1,14 @@
 from article.article import Article
+from article.article_error import NotExistArticleError, UnsupportedTypeError
 
 def run(articles):
     if len(articles) == 0:
-        # TODO: raise exception
-        return
+        raise NotExistArticleError('Need to Generate Article.')
 
     for article in articles:
+        if type(article) is not Article:
+            raise UnsupportedTypeError('Only Article type.')
+
         # 20. JSONデータの読み込み
         print('20. JSONデータの読み込み:\n{src}'.format(src=article.get_content()))
         print('-' * 100)
@@ -41,13 +44,22 @@ def run(articles):
 
 
 if __name__ == '__main__':
-    WIKI_PATH = './wiki'
-    Article.down_load_article_once(WIKI_PATH)
+    try:
+        WIKI_PATH = './wiki'
+        Article.down_load_article_once(WIKI_PATH)
 
-    articles = [
-        Article(WIKI_PATH, 'イギリス'),
-        Article(WIKI_PATH, 'トルコ'),
-        Article(WIKI_PATH, '日本'),
-    ]
+        articles = [
+            Article(WIKI_PATH, 'イギリス'),
+            Article(WIKI_PATH, 'トルコ'),
+            Article(WIKI_PATH, '日本'),
+        ]
+        run(articles)
 
-    run(articles)
+    except NotExistArticleError as err:
+        print('NotExistArticleError!: {err}'.format(err=err))
+    except UnsupportedTypeError as err:
+        print('UnsupportedTypeError!: {err}'.format(err=err))
+    except Exception as err:
+        print('Exception!: {err}'.format(err=err))
+    finally:
+        print('Good bye...')
