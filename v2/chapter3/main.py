@@ -27,3 +27,7 @@ if __name__ == '__main__':
     # 24. ファイル参照の抽出
     print('24. ファイル参照の抽出:\n{src}'.format(src=england_article.get_media_file_paths()))
     print('-' * 100)
+
+    # 25. テンプレートの抽出
+    print('25. テンプレートの抽出:\n{src}'.format(src=england_article.get_base_info_map()))
+    print('-' * 100)

@@ -29,6 +29,7 @@ class Article:
         self._extract_categories_in_rows()
         self._mapping_section_and_level()
         self._extract_media_file_paths()
+        self._mapping_base_informateion()
 
     def get_content(self):
         return self._content
@@ -45,6 +46,9 @@ class Article:
 
     def get_media_file_paths(self):
         return self._media_file_paths
+
+    def get_base_info_map(self):
+        return self._base_info_map
 
 # ------------------------ private methods ------------------------
 
@@ -100,3 +104,21 @@ class Article:
         # FIXME: 抜け漏れ正規表現
         compiled_media_file_path_pattern = re.compile(r'ファイル:(.+?)[]|\|]')
         self._media_file_paths = compiled_media_file_path_pattern.findall(self._content)
+
+    def _mapping_base_informateion(self):
+        '''25. テンプレートの抽出'''
+        # イギリスの記事から「基礎情報」を抜き出す
+        compiled_base_info_pattern = re.compile(r'{{基礎情報(.+?)\\n}}')
+        base_info = compiled_base_info_pattern.findall(self._content)[0]
+
+        # 抜き出した「基礎情報」からkey/valueを抜き出す
+        compiled_key_value_pattern = re.compile(r'\\n\|(.+?=.+?)(?=\\n)')
+        base_info_kv_list = compiled_key_value_pattern.findall(base_info)
+
+        # 抜き出したkey/valueを各々空白をトリムして辞書型変数に格納
+        self._base_info_map = {}
+        for kv in base_info_kv_list:
+            tmp = kv.split('=')
+            k = tmp[0].strip()
+            v = tmp[1].strip()
+            self._base_info_map[k] = v
