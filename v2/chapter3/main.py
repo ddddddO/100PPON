@@ -19,4 +19,4 @@ if __name__ == '__main__':
     print('-' * 100)
 
     # 22. カテゴリ名の抽出
-    print(england_article.get_categories())
+    print('22. カテゴリ名の抽出:\n{src}'.format(src=england_article.get_categories()))

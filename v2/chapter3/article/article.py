@@ -4,12 +4,7 @@ class Article:
     _compiled_category_pattern = re.compile(r'(?<=Category:).+(?=]])')
 
     def __init__(self, src, country):
-        target_country = '{"title": "' + country + '",'
-        for line in open(src, 'r').readlines():
-            if target_country in line:
-                self._content = line
-                break
-
+        self._load_json_data(src, country)
         self._extract_category_rows()
         self._extract_categories_in_rows()
 
@@ -22,7 +17,16 @@ class Article:
     def get_categories(self):
         return self._categories
 
-# -------- private methods --------
+# ------------------------ private methods ------------------------
+
+    def _load_json_data(self, src, country):
+        '''20. JSONデータの読み込み'''
+        target_country = '{"title": "' + country + '",'
+        for line in open(src, 'r').readlines():
+            if target_country in line:
+                self._content = line
+                return
+
     def _extract_category_rows(self):
         '''21. カテゴリ名を含む行を抽出'''
         begin = self._content.find('[[Category')
@@ -39,5 +43,4 @@ class Article:
                 # TODO: raise exception
                 pass
             categories.append(serched_match.group())
-
         self._categories = categories
