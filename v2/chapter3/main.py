@@ -4,7 +4,7 @@ if __name__ == '__main__':
     wiki_path = './wiki'
     Article.down_load_article_once(wiki_path)
 
-    country = '日本'
+    country = 'イギリス'
     england_article = Article(wiki_path, country)
 
     # 20. JSONデータの読み込み
