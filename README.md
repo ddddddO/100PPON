@@ -1,5 +1,5 @@
 - [言語処理100本ノック](https://nlp100.github.io/ja/)
 - [Pythonチュートリアル](https://docs.python.org/ja/3/tutorial/index.html)
-    - 一旦6.モジュールまで読んだ。続き後で読む。
+    - 一旦10. 標準ライブラリミニツアーまで読んだ。続き後で読む。
 - [Python には、ほとんどのプロジェクトが守っているスタイルガイドとして PEP 8 があります。](https://www.python.org/dev/peps/pep-0008/)
     - どこかで目を通す。
