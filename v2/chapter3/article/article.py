@@ -1,6 +1,28 @@
 import re
+import os
+import gzip
+from urllib.request import urlopen
 
 class Article:
+
+# ------------------------ class method ------------------------
+
+    @classmethod
+    def down_load_article_once(cls, dest):
+        if cls._exist_article(dest):
+            return
+
+        url = 'https://nlp100.github.io/data/jawiki-country.json.gz'
+        response = urlopen(url)
+
+        gzip_file = gzip.GzipFile(fileobj=response)
+        content = gzip_file.read()
+
+        file = open(dest, 'w')
+        file.write(content.decode('utf-8'))
+
+# ------------------------ instance methods ------------------------
+
     def __init__(self, src, country):
         self._load_json_data(src, country)
         self._extract_category_rows()
@@ -21,6 +43,10 @@ class Article:
             print('level: {lv}\nsections: {list}\n'.format(lv=k, list=self._section_lv_map[k]))
 
 # ------------------------ private methods ------------------------
+
+    @classmethod
+    def _exist_article(cls, path):
+        return os.path.isfile(path)
 
     def _load_json_data(self, src, country):
         '''20. JSONデータの読み込み'''

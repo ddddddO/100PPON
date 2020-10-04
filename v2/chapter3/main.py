@@ -1,9 +1,8 @@
-from article.download import down_load_article_once
 from article.article import Article
 
 if __name__ == '__main__':
     wiki_path = './wiki'
-    down_load_article_once(wiki_path)
+    Article.down_load_article_once(wiki_path)
 
     country = 'イギリス'
     england_article = Article(wiki_path, country)
