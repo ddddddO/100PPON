@@ -107,7 +107,7 @@ class Article:
 
     def _mapping_base_informateion(self):
         '''25. テンプレートの抽出'''
-        # イギリスの記事から「基礎情報」を抜き出す
+        # インスタンス国記事から「基礎情報」を抜き出す
         compiled_base_info_pattern = re.compile(r'{{基礎情報(.+?)\\n}}')
         base_info = compiled_base_info_pattern.findall(self._content)[0]
 
