@@ -28,6 +28,7 @@ class Article:
         self._extract_category_rows()
         self._extract_categories_in_rows()
         self._mapping_section_and_level()
+        self._extract_media_file_paths()
 
     def get_content(self):
         return self._content
@@ -41,6 +42,9 @@ class Article:
     def show_section_and_level_in_content(self):
         for k in self._section_lv_map:
             print('level: {lv}\nsections: {list}\n'.format(lv=k, list=self._section_lv_map[k]))
+
+    def get_media_file_paths(self):
+        return self._media_file_paths
 
 # ------------------------ private methods ------------------------
 
@@ -90,3 +94,9 @@ class Article:
             2: section_lv2_list,
             3: section_lv3_list,
         }
+
+    def _extract_media_file_paths(self):
+        '''24. ファイル参照の抽出'''
+        # FIXME: 抜け漏れ正規表現
+        compiled_media_file_path_pattern = re.compile(r'ファイル:(.+?)[]|\|]')
+        self._media_file_paths = compiled_media_file_path_pattern.findall(self._content)
