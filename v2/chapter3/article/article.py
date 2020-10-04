@@ -1,12 +1,11 @@
 import re
 
 class Article:
-    _compiled_category_pattern = re.compile(r'(?<=Category:).+(?=]])')
-
     def __init__(self, src, country):
         self._load_json_data(src, country)
         self._extract_category_rows()
         self._extract_categories_in_rows()
+        self._mapping_section_and_level()
 
     def get_content(self):
         return self._content
@@ -16,6 +15,10 @@ class Article:
 
     def get_categories(self):
         return self._categories
+
+    def show_section_and_level_in_content(self):
+        for k in self._section_lv_map:
+            print('level: {lv}\nsections: {list}\n'.format(lv=k, list=self._section_lv_map[k]))
 
 # ------------------------ private methods ------------------------
 
@@ -36,11 +39,28 @@ class Article:
 
     def _extract_categories_in_rows(self):
         '''22. カテゴリ名の抽出'''
+        _compiled_category_pattern = re.compile(r'(?<=Category:).+(?=]])')
         categories = []
         for row in self._category_rows:
-            serched_match = self._compiled_category_pattern.search(row)
+            serched_match = _compiled_category_pattern.search(row)
             if serched_match is None:
                 # TODO: raise exception
                 pass
             categories.append(serched_match.group())
         self._categories = categories
+
+    def _mapping_section_and_level(self):
+        '''23. セクション構造'''
+        _compiled_section_lv1_pattern = re.compile(r'={2}([^(=\n)]+)={2}[^=]')
+        _compiled_section_lv2_pattern = re.compile(r'={3}([^(=\n)]+)={3}[^=]')
+        _compiled_section_lv3_pattern = re.compile(r'={4}([^(=\n)]+)={4}[^=]')
+
+        section_lv1_list = _compiled_section_lv1_pattern.findall(self._content)
+        section_lv2_list = _compiled_section_lv2_pattern.findall(self._content)
+        section_lv3_list = _compiled_section_lv3_pattern.findall(self._content)
+
+        self._section_lv_map = {
+            1: section_lv1_list,
+            2: section_lv2_list,
+            3: section_lv3_list,
+        }
