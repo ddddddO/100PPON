@@ -120,12 +120,18 @@ class Article:
         for kv in base_info_kv_list:
             tmp = kv.split('=')
             k = tmp[0].strip()
-            v = self._trim_internal_link_tag(
+            v = self._trim(tmp[1])
+            self._base_info_map[k] = v
+
+    def _trim(self, value):
+        tmp = self._trim_media_wiki_tag(
+                self._trim_internal_link_tag(
                     self._trim_strong_tag(
-                        tmp[1].strip()
+                        value.strip()
                     )
                 )
-            self._base_info_map[k] = v
+            )
+        return tmp
 
     def _trim_strong_tag(self, value):
         '''26. 強調マークアップの除去'''
@@ -138,4 +144,10 @@ class Article:
         '''27. 内部リンクの除去'''
         tmp = re.sub(r'\[\[', '', value)
         tmp = re.sub(r'\]\]', '', tmp)
+        return tmp
+
+    def _trim_media_wiki_tag(self, value):
+        '''28. MediaWikiマークアップの除去'''
+        tmp = re.sub('{{', '', value)
+        tmp = re.sub('}}', '', tmp)
         return tmp

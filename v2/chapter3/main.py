@@ -28,6 +28,6 @@ if __name__ == '__main__':
     print('24. ファイル参照の抽出:\n{src}'.format(src=england_article.get_media_file_paths()))
     print('-' * 100)
 
-    # 25. テンプレートの抽出/26. 強調マークアップの除去/27. 内部リンクの除去
-    print('25. テンプレートの抽出/26. 強調マークアップの除去/27. 内部リンクの除去:\n{src}'.format(src=england_article.get_base_info_map()))
+    # 25. テンプレートの抽出/26. 強調マークアップの除去/27. 内部リンクの除去/28. MediaWikiマークアップの除去
+    print('25. テンプレートの抽出/26. 強調マークアップの除去/27. 内部リンクの除去/28. MediaWikiマークアップの除去:\n{src}'.format(src=england_article.get_base_info_map()))
     print('-' * 100)
