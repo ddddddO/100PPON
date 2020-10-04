@@ -39,10 +39,10 @@ class Article:
 
     def _extract_categories_in_rows(self):
         '''22. カテゴリ名の抽出'''
-        _compiled_category_pattern = re.compile(r'(?<=Category:).+(?=]])')
+        compiled_category_pattern = re.compile(r'(?<=Category:).+(?=]])')
         categories = []
         for row in self._category_rows:
-            serched_match = _compiled_category_pattern.search(row)
+            serched_match = compiled_category_pattern.search(row)
             if serched_match is None:
                 # TODO: raise exception
                 pass
@@ -51,13 +51,13 @@ class Article:
 
     def _mapping_section_and_level(self):
         '''23. セクション構造'''
-        _compiled_section_lv1_pattern = re.compile(r'={2}([^(=\n)]+)={2}[^=]')
-        _compiled_section_lv2_pattern = re.compile(r'={3}([^(=\n)]+)={3}[^=]')
-        _compiled_section_lv3_pattern = re.compile(r'={4}([^(=\n)]+)={4}[^=]')
+        compiled_section_lv1_pattern = re.compile(r'={2}([^(=\n)]+)={2}[^=]')
+        compiled_section_lv2_pattern = re.compile(r'={3}([^(=\n)]+)={3}[^=]')
+        compiled_section_lv3_pattern = re.compile(r'={4}([^(=\n)]+)={4}[^=]')
 
-        section_lv1_list = _compiled_section_lv1_pattern.findall(self._content)
-        section_lv2_list = _compiled_section_lv2_pattern.findall(self._content)
-        section_lv3_list = _compiled_section_lv3_pattern.findall(self._content)
+        section_lv1_list = compiled_section_lv1_pattern.findall(self._content)
+        section_lv2_list = compiled_section_lv2_pattern.findall(self._content)
+        section_lv3_list = compiled_section_lv3_pattern.findall(self._content)
 
         self._section_lv_map = {
             1: section_lv1_list,
