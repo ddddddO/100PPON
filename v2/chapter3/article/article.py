@@ -69,10 +69,12 @@ class Article:
     def _load_json_data(self, src, country):
         '''20. JSONデータの読み込み'''
         target_country = '{"title": "' + country + '",'
-        for line in open(src, 'r').readlines():
+        f = open(src, 'r')
+        for line in f.readlines():
             if target_country in line:
                 self._content = line
-                return
+                break
+        f.close()
 
     def _extract_category_rows(self):
         '''21. カテゴリ名を含む行を抽出'''
