@@ -8,8 +8,8 @@ jobs:
       - checkout
       - run:
           name: Run unittest
+          environment:
+            PYTHONPATH: /root/project/v2/chapter3/
           command: |
-            pwd
-            ls
-            echo $CIRCLE_WORKING_DIRECTORY
-            export PYTHONPATH=$CIRCLE_WORKING_DIRECTORY/v2/chapter3; cd v2; make testci
+            cd v2
+            make testci
