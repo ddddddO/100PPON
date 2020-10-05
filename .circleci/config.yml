@@ -9,4 +9,4 @@ jobs:
       - run:
           name: Run unittest
           command: |
-            cd v2; make testci
+            cd v2; export PYTHONPATH=$CIRCLE_WORKING_DIRECTORY/chapter3; make testci
