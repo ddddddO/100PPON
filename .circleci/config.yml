@@ -9,4 +9,5 @@ jobs:
       - run:
           name: Run unittest
           command: |
+            pwd
             export PYTHONPATH=$CIRCLE_WORKING_DIRECTORY/v2/chapter3; cd v2; make testci
