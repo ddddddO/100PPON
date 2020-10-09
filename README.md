@@ -6,4 +6,4 @@
 - [Pythonでmecab](https://qiita.com/Sak1361/items/47e9ec464ccc770cd65c)
 - [mecab-python3](https://pypi.org/project/mecab-python3/)
 - [Python3.7.2へアップグレード](https://qiita.com/HyunwookPark/items/8141069bf0b0f3fb175b)
-- WSL内で`sudo pip install jupyter-notebook`後、`jupyter-notebook`コマンド実行でブラウザからアクセスできる。
+- WSL内で`sudo apt install jupyter-notebook`後、`jupyter-notebook`コマンド実行でブラウザからアクセスできる。
