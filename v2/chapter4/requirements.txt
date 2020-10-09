@@ -1,2 +1,5 @@
 mecab-python3 == 1.0.1
 unidic-lite == 1.0.7
+matplotlib
+ipython
+ipykernel
