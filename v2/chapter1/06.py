@@ -1,14 +1,14 @@
 import modules.sequence as mod
 
-def toSet(src):
+def to_set(src):
     seq = mod.Sequence(src)
     seq_bi_gram_list = seq.bi_gram_char()
     return set(seq_bi_gram_list)
 
 src_x = 'paraparaparadise'
 src_y = 'paragraph'
-src_x_set = toSet(src_x)
-src_y_set = toSet(src_y)
+src_x_set = to_set(src_x)
+src_y_set = to_set(src_y)
 
 print('src_x_set: {sx}'.format(sx = src_x_set))
 print('src_y_set: {sy}'.format(sy = src_y_set))
